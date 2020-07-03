@@ -17,6 +17,7 @@ public class Topics {
     @Id
     @GeneratedValue
     private int id;
+    
 	private String name;
 	private byte npmScore;
 }
