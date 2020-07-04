@@ -40,7 +40,7 @@ public class TopicService {
 	}
 	
 	public Topic updateTopic(Topic topic) {
-		Topic existingTopic=repository.findById(topic.getId()).orElse(null);
+		Topic existingTopic=repository.findById(topic.getTopicId()).orElse(null);
 		existingTopic.setName(topic.getName());
 		existingTopic.setNpmScore(topic.getNpmScore());
 		return repository.save(existingTopic);

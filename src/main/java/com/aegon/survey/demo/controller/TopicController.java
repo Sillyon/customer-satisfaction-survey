@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aegon.survey.demo.entity.Topic;
 import com.aegon.survey.demo.service.TopicService;
 
+import io.swagger.annotations.Api;
+
 @RequestMapping("/topic")
 @RestController
+@Api(value="topic", description=" Topic Operations Service")
 public class TopicController {
 	
 	@Autowired
