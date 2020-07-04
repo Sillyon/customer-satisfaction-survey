@@ -3,35 +3,35 @@ package com.aegon.survey.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aegon.survey.demo.entity.Topics;
-import com.aegon.survey.demo.repository.TopicsRepository;
+import com.aegon.survey.demo.entity.Topic;
+import com.aegon.survey.demo.repository.TopicRepository;
 
 import java.util.List;
 
 
 @Service
-public class TopicsService {
+public class TopicService {
 	
 	@Autowired
-	private TopicsRepository repository;
+	private TopicRepository repository;
 	
-	public Topics saveTopic(Topics topic) {
+	public Topic saveTopic(Topic topic) {
 		return repository.save(topic);
 	}
 	
-	public List<Topics> saveTopics(List<Topics> topics) {
+	public List<Topic> saveTopics(List<Topic> topics) {
 		return repository.saveAll(topics);
 	}
 	
-	public List<Topics> getTopics() {
+	public List<Topic> getTopics() {
 		return repository.findAll();
 	}
 	
-	public Topics getTopicById(int id) {
+	public Topic getTopicById(int id) {
 		return repository.findById(id).orElse(null);
 	}
 	
-	public Topics getTopicByName(String name) {
+	public Topic getTopicByName(String name) {
 		return repository.findByName(name);
 	}
 	
@@ -40,10 +40,10 @@ public class TopicsService {
 		return "Topic removed. "+id;
 	}
 	
-	public Topics updateTopic(Topics topic) {
-		Topics existingTopic=repository.findById(topic.getId()).orElse(null);
+	public Topic updateTopic(Topic topic) {
+		Topic existingTopic=repository.findById(topic.getId()).orElse(null);
 		existingTopic.setName(topic.getName());
-		existingTopic.setNpmScore(topic.getNpmScore());
+		existingTopic.setScore(topic.getScore());
 		return repository.save(existingTopic);
 	}
 	

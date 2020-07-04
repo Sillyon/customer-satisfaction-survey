@@ -12,12 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Topics {
+public class Topic {
 	
     @Id
     @GeneratedValue
     private int id;
     
 	private String name;
-	private byte npmScore;
+	
+	private byte score;
 }

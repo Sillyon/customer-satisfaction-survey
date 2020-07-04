@@ -11,42 +11,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aegon.survey.demo.entity.Topics;
-import com.aegon.survey.demo.service.TopicsService;
+import com.aegon.survey.demo.entity.Topic;
+import com.aegon.survey.demo.service.TopicService;
 
 @RestController
-public class TopicsController {
+public class TopicController {
 	
 	@Autowired
-	private TopicsService service;
+	private TopicService service;
 	
 	@PostMapping("/addTopic")
-	public Topics addTopic(@RequestBody Topics topic) {
+	public Topic addTopic(@RequestBody Topic topic) {
 		return service.saveTopic(topic);
 	}
 	
 	@PostMapping("/addTopics")
-	public List<Topics> addTopics(@RequestBody List<Topics> topics) {
+	public List<Topic> addTopics(@RequestBody List<Topic> topics) {
 		return service.saveTopics(topics);
 	}
 	
 	@GetMapping("/topics")
-	public List<Topics> findAllTopics() {
+	public List<Topic> findAllTopics() {
 		return service.getTopics();
 	}
 	
 	@GetMapping("/topicById/{id}")
-	public Topics findTopicById(@PathVariable int id) {
+	public Topic findTopicById(@PathVariable int id) {
 		return service.getTopicById(id);
 	}
 	
 	@GetMapping("/topicByName/{name}")
-	public Topics findTopicByName(@PathVariable String name) {
+	public Topic findTopicByName(@PathVariable String name) {
 		return service.getTopicByName(name);
 	}
 	
 	@PutMapping("/update")
-	public Topics updateTopic(@RequestBody Topics topic) {
+	public Topic updateTopic(@RequestBody Topic topic) {
 		return service.saveTopic(topic);
 	}
 	
