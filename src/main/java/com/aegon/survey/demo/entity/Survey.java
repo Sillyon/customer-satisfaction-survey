@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Topic {
+public class Survey {
 	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int topicId;
     
-	private String name;
+	private String topic;
 	
 	private int npmScore;
 }

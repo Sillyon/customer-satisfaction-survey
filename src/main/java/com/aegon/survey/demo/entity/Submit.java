@@ -27,5 +27,5 @@ public class Submit {
 	
 	@ManyToOne
 	@JoinColumn(name ="topicId")
-	private Topic topic;
+	private Survey topic;
 }
