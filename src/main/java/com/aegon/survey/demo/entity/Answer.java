@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Topic {
+public class Answer {
 	
-    @Id
-    @GeneratedValue
-    private int id;
-    
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	private String name;
 	
 	private int score;
+	
+	private String feedback;
 }

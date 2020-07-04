@@ -1,6 +1,5 @@
 package com.aegon.survey.demo.repository;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.aegon.survey.demo.entity.Topic;
