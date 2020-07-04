@@ -8,7 +8,6 @@ import com.aegon.survey.demo.repository.TopicRepository;
 
 import java.util.List;
 
-
 @Service
 public class TopicService {
 	
@@ -43,7 +42,7 @@ public class TopicService {
 	public Topic updateTopic(Topic topic) {
 		Topic existingTopic=repository.findById(topic.getId()).orElse(null);
 		existingTopic.setName(topic.getName());
-		existingTopic.setScore(topic.getScore());
+		existingTopic.setNpmScore(topic.getNpmScore());
 		return repository.save(existingTopic);
 	}
 	

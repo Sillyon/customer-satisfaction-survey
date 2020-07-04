@@ -43,6 +43,7 @@ public class AnswerService {
 		Answer existingAnswer=repository.findById(answer.getId()).orElse(null);
 		existingAnswer.setName(answer.getName());
 		existingAnswer.setScore(answer.getScore());
+		existingAnswer.setFeedback(answer.getFeedback());
 		return repository.save(existingAnswer);
 	}
 }
