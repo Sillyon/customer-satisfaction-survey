@@ -22,21 +22,22 @@ public class SurveyService {
 		return repository.saveAll(surveys);
 	}
 	
+	//List Survey topics
 	public List<Survey> getSurveys() {
 		return repository.findAll();
 	}
 	
+	public void setNpmScore(int id) {
+		
+	}
+	
 	public Survey getSurveyById(int id) {
+		//getnpmscorebyid
 		return repository.findById(id).orElse(null);
 	}
 	
-	public Survey getSurveyByName(String name) {
-		return repository.findByTopic(name);
-	}
-	
-	public String deleteSurvey(int id) {
-		repository.deleteById(id);
-		return "Survey removed. "+id;
+	public Survey getSurveyByTopic(String topic) {
+		return repository.findByTopic(topic);
 	}
 	
 	public Survey updateSurvey(Survey survey) {
@@ -45,5 +46,4 @@ public class SurveyService {
 		existingSurvey.setNpmScore(survey.getNpmScore());
 		return repository.save(existingSurvey);
 	}
-	
 }

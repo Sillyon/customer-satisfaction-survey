@@ -8,6 +8,6 @@ import com.aegon.survey.demo.entity.Survey;
 @Repository
 public interface SurveyRepository extends JpaRepository<Survey,Integer> {
 
-	Survey findByTopic(String name);
+	Survey findByTopic(String topic);
 	
 }

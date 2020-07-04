@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Submit {
+public class Answer {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
