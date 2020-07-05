@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AccessLevel;
 
 @Data
 @AllArgsConstructor
@@ -21,5 +23,6 @@ public class Survey {
     
 	private String topic;
 	
+	@Setter(AccessLevel.NONE) //this option omits to set this variable.
 	private Integer npmScore;
 }
