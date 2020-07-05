@@ -26,6 +26,6 @@ public class Answer {
 	private String feedback;
 	
 	@ManyToOne
-	@JoinColumn(name ="topicId")
+	@JoinColumn(name ="topicId") //this is the foreign key from table Answer to table Survey.
 	private Survey survey;
 }

@@ -18,21 +18,18 @@ public class AnswerService {
 	@Autowired
 	private SurveyRepository surveyRepository;
 	
-	
+	// Create Submit (Fill Survey)
 	public Answer saveAnswer(Answer answer) {
 		return answerRepository.save(answer);
 	}
 	
+	// multiple submits.
 	public List<Answer> saveAnswers(List<Answer> answers) {
 		return answerRepository.saveAll(answers);
 	}
 	
+	// get All Answers.
 	public List<Answer> getAnswers() {
-		return answerRepository.findAll();
-	}
-	
-	// ???
-	public List<Answer> getAnswersByTopicId(Integer topicId) {
 		return answerRepository.findAll();
 	}
 	
@@ -41,14 +38,15 @@ public class AnswerService {
 		return null;
 	}
 	
-	public Answer getAnswerById(int id) {
-		return answerRepository.findById(id).orElse(null);
-	}
-	
 	public Answer updateAnswer(Answer answer) {
 		Answer existingAnswer=answerRepository.findById(answer.getSubmitId()).orElse(null);
 		existingAnswer.setScore(answer.getScore());
 		existingAnswer.setFeedback(answer.getFeedback());
 		return answerRepository.save(existingAnswer);
+	}
+	
+	// 
+	public List<String> getTopics() {
+		return surveyRepository.findAllTopics();
 	}
 }
