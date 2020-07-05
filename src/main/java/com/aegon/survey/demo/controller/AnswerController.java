@@ -6,43 +6,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.service.AnswerService;
+import com.aegon.survey.demo.service.SurveyService;
 
 @RequestMapping("/answer")
 @RestController
 public class AnswerController {
 	
 	@Autowired
-	private AnswerService service;
+	private AnswerService answerService;
 	
-	@PostMapping("/answerSurvey")
+	@Autowired
+	private SurveyService surveyService;
+	
+	//lists topics
+	@GetMapping("answersByTopic")
+	public List<String> getTopics(){
+		return surveyService.getTopics();
+	}
+	
+	//submits an answer.
+	@PostMapping("/addAnswer")
 	public Answer addAnswer(@RequestBody Answer answer) {
-		return service.saveAnswer(answer);
+		return answerService.saveAnswer(answer);
 	}
 	
-	@PostMapping("/answerSurveys")
-	public List<Answer> addAnswers(@RequestBody List<Answer> answers) {
-		return service.saveAnswers(answers);
-	}
-	
-	@GetMapping("/answers")
-	public List<Answer> findAllAnswers() {
-		return service.getAnswers();
-	}
-	
-	@GetMapping("/answerById/{id}")
-	public Answer findAnswerById(@PathVariable int id) {
-		return service.getAnswerById(id);
-	}
-	
-	@PutMapping("/update")
-	public Answer updateAnswer(@RequestBody Answer answer) {
-		return service.saveAnswer(answer);
-	}
+	//lists answers of a Survey Topic.
+	/*@GetMapping("/answersByTopic/{id}")
+	public List<Answer> findAnswersByTopic(@PathVariable int topicId) {
+		return answerService.getAnswersByTopic(topicId);
+	}*/
 }

@@ -21,5 +21,5 @@ public class Survey {
     
 	private String topic;
 	
-	private int npmScore;
+	private Integer npmScore;
 }

@@ -3,7 +3,9 @@ package com.aegon.survey.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.entity.Survey;
+import com.aegon.survey.demo.repository.AnswerRepository;
 import com.aegon.survey.demo.repository.SurveyRepository;
 
 import java.util.List;
@@ -12,38 +14,44 @@ import java.util.List;
 public class SurveyService {
 	
 	@Autowired
-	private SurveyRepository repository;
+	private SurveyRepository surveyRepository;
+	
+	@Autowired
+	private AnswerRepository answerRepository;
 	
 	public Survey saveSurvey(Survey survey) {
-		return repository.save(survey);
+		return surveyRepository.save(survey);
 	}
 	
 	public List<Survey> saveSurveys(List<Survey> surveys) {
-		return repository.saveAll(surveys);
+		return surveyRepository.saveAll(surveys);
 	}
 	
 	//List Survey topics
 	public List<Survey> getSurveys() {
-		return repository.findAll();
-	}
-	
-	public void setNpmScore(int id) {
-		
+		return surveyRepository.findAll();
 	}
 	
 	public Survey getSurveyById(int id) {
-		//getnpmscorebyid
-		return repository.findById(id).orElse(null);
+		return surveyRepository.findById(id).orElse(null);
+	}
+
+	public void setNpmScoresOfSurveys() {
+		// TODO Auto-generated method stub
 	}
 	
-	public Survey getSurveyByTopic(String topic) {
-		return repository.findByTopic(topic);
+	//returns topic string list from Survey table. 
+	public List<String> getTopics() {
+		return surveyRepository.findAllTopics();
+		/*List<String> topicList = new ArrayList<String>();
+		List<Survey> surveyList=getSurveys();
+		for (Survey survey : surveyList) {
+			topicList.add(survey.getTopic());
+		}
+		return topicList;*/
 	}
 	
-	public Survey updateSurvey(Survey survey) {
-		Survey existingSurvey=repository.findById(survey.getTopicId()).orElse(null);
-		existingSurvey.setTopic(survey.getTopic());
-		existingSurvey.setNpmScore(survey.getNpmScore());
-		return repository.save(existingSurvey);
+	public List<Answer> getAnswersByTopic(int topicId) {
+		return answerRepository.findAllBySurvey(topicId);
 	}
 }

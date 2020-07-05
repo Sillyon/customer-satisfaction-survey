@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,30 +17,21 @@ import com.aegon.survey.demo.service.SurveyService;
 public class SurveyController {
 	
 	@Autowired
-	private SurveyService service;
+	private SurveyService surveyService;
 	
-	@PostMapping("/createSurvey")
+	//creates a survey.
+	@PostMapping("/addSurvey")
 	public Survey addSurvey(@RequestBody Survey survey) {
-		return service.saveSurvey(survey);
+		//survey id ile ansver list al
+		//mesela 4 eleman var ise yeni puanıda ekleyip 5 e böl
+		//sonucu syrveye set et 
+		return surveyService.saveSurvey(survey);
 	}
 	
-	@GetMapping("/surveys")
+	//lists Surveys
+	@GetMapping("/listSurveys")
 	public List<Survey> findAllSurveys() {
-		return service.getSurveys();
-	}
-	
-	@GetMapping("/surveyById/{id}")
-	public Survey findSurveyById(@PathVariable int id) {
-		return service.getSurveyById(id);
-	}
-	
-	@GetMapping("/surveyByTopic/{topic}")
-	public Survey findSurveyByName(@PathVariable String topic) {
-		return service.getSurveyByTopic(topic);
-	}
-	
-	@PutMapping("/update")
-	public Survey updateSurvey(@RequestBody Survey survey) {
-		return service.saveSurvey(survey);
+		surveyService.setNpmScoresOfSurveys();
+		return surveyService.getSurveys();
 	}
 }

@@ -27,5 +27,5 @@ public class Answer {
 	
 	@ManyToOne
 	@JoinColumn(name ="topicId")
-	private Survey topic;
+	private Survey survey;
 }

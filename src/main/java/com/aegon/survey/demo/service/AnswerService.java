@@ -7,42 +7,48 @@ import org.springframework.stereotype.Service;
 
 import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.repository.AnswerRepository;
+import com.aegon.survey.demo.repository.SurveyRepository;
 
 @Service
 public class AnswerService {
 	
 	@Autowired
-	private AnswerRepository repository;
+	private AnswerRepository answerRepository;
+	
+	@Autowired
+	private SurveyRepository surveyRepository;
+	
 	
 	public Answer saveAnswer(Answer answer) {
-		return repository.save(answer);
+		return answerRepository.save(answer);
 	}
 	
 	public List<Answer> saveAnswers(List<Answer> answers) {
-		return repository.saveAll(answers);
+		return answerRepository.saveAll(answers);
 	}
 	
 	public List<Answer> getAnswers() {
-		return repository.findAll();
+		return answerRepository.findAll();
 	}
-	/*
-	public List<Answer> getAnswersByTopicId() {
-		return repository.findAll();
+	
+	// ???
+	public List<Answer> getAnswersByTopicId(Integer topicId) {
+		return answerRepository.findAll();
 	}
 	
 	//List Survey Answers
-	public List<Answer> getAnswerBySurvey(int SurveyId) {
+	public List<Answer> getAnswerBySurvey(int topicId) {
 		return null;
-	}*/
+	}
 	
 	public Answer getAnswerById(int id) {
-		return repository.findById(id).orElse(null);
+		return answerRepository.findById(id).orElse(null);
 	}
 	
 	public Answer updateAnswer(Answer answer) {
-		Answer existingAnswer=repository.findById(answer.getSubmitId()).orElse(null);
+		Answer existingAnswer=answerRepository.findById(answer.getSubmitId()).orElse(null);
 		existingAnswer.setScore(answer.getScore());
 		existingAnswer.setFeedback(answer.getFeedback());
-		return repository.save(existingAnswer);
+		return answerRepository.save(existingAnswer);
 	}
 }
