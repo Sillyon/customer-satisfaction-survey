@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,20 +21,20 @@ public class AnswerController {
 	private AnswerService answerService;
 	
 	//lists topics
-	@GetMapping("answersByTopic")
+	@GetMapping("/topics")
 	public List<String> getTopics(){
 		return answerService.getTopics();
 	}
 	
 	//submits an answer.
-	@PostMapping("/addAnswer")
+	@PostMapping("/submit")
 	public Answer addAnswer(@RequestBody Answer answer) {
 		return answerService.saveAnswer(answer);
 	}
 	
 	//lists answers of a Survey Topic.
-	/*@GetMapping("/answersByTopic/{id}")
-	public List<Answer> findAnswersByTopic(@PathVariable int topicId) {
+	@GetMapping("/listByTopic/{topicId}")
+	public List<Answer> listAnswersByTopic(@PathVariable int topicId) {
 		return answerService.getAnswersByTopic(topicId);
-	}*/
+	}
 }

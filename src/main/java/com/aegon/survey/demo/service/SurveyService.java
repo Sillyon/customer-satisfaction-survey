@@ -25,18 +25,14 @@ public class SurveyService {
 	}
 	
 	// Create Multiple Surveys
-	public List<Survey> saveSurveys(List<Survey> surveys) {
+	/*public List<Survey> saveSurveys(List<Survey> surveys) {
 		return surveyRepository.saveAll(surveys);
-	}
+	}*/
 	
-	public Survey getSurveyById(int id) {
+	// get survey object by id.
+	/*public Survey getSurveyById(int id) {
 		return surveyRepository.findById(id).orElse(null);
-	}
-	
-	// ???
-	public void setNpmScoresOfSurveys() {
-		// TODO Auto-generated method stub
-	}
+	}*/
 	
 	//returns topic string list from Survey table. 
 	public List<String> getAllTopics() {
@@ -52,10 +48,5 @@ public class SurveyService {
 	//List Survey object with Topics
 	public List<Survey> getSurveys() {
 		return surveyRepository.findAll();
-	}
-	
-	//List Answers By Topic
-	public List<Answer> getAnswersByTopic(int topicId) {
-		return answerRepository.findAllBySurvey(topicId);
 	}
 }

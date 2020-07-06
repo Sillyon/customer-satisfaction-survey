@@ -20,18 +20,14 @@ public class SurveyController {
 	private SurveyService surveyService;
 	
 	//creates a survey.
-	@PostMapping("/addSurvey")
+	@PostMapping("/create")
 	public Survey addSurvey(@RequestBody Survey survey) {
-		//survey id ile ansver list al
-		//mesela 4 eleman var ise yeni puanıda ekleyip 5 e böl
-		//sonucu syrveye set et 
 		return surveyService.saveSurvey(survey);
 	}
 	
 	//lists Surveys
-	@GetMapping("/listSurveys")
+	@GetMapping("/list")
 	public List<Survey> findAllSurveys() {
-		surveyService.setNpmScoresOfSurveys();
 		return surveyService.getSurveys();
 	}
 }
