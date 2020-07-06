@@ -30,3 +30,9 @@ and additionaly;
 * **Controller** (Rest | Endpoint)
 * and **Config** (Swagger2 | other-configurations)
 * no utility layer.
+
+### Project Execution
+
+* localhost:8080 URI for Postman,
+* localhost:8080/h2-console URI for db interface, 
+* localhost:8080/swagger-ui.html URI for swagger interface.
