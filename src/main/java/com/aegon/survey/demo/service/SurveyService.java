@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.entity.Survey;
 import com.aegon.survey.demo.repository.AnswerRepository;
@@ -25,32 +23,31 @@ public class SurveyService {
 		return surveyRepository.save(survey);
 	}
 	
-	@Transactional //because NPSs of Topics are calculating before get Survey List.
 	//List Survey object with Topics
 	public List<Survey> getSurveys() {
-		updateNpmScores();
 		return surveyRepository.findAll();
 	}
 	
+	// this update method calling by listSurveys Rest
 	public void updateNpmScores() {
 		for (Survey survey : surveyRepository.findAll()) {
 			List<Answer> answers = answerRepository.findAllBySurveyTopicId(survey.getTopicId());
-			int promoterCount=0;
-			int detractorCount=0;
-			for (Answer answer : answers) {
-				if(answer.getScore()>=9) {
-					promoterCount++;
-				}
-				else if(answer.getScore()<=6) {
-					detractorCount++;
-				}
-			}
 			int answerCount = answers.size();
-			int NPS=(100*(promoterCount-detractorCount))/answerCount;
-			//update nps field
-			Survey existingSurvey=surveyRepository.findById(survey.getTopicId()).orElse(null);
-			existingSurvey.setNpmScore(NPS);
-			surveyRepository.save(existingSurvey);
+			if(answerCount!=0) {
+				int promoterCount=0;
+				int detractorCount=0;
+				for (Answer answer : answers) {
+					if(answer.getScore()>=9) {
+						promoterCount++;
+					}
+					else if(answer.getScore()<=6) {
+						detractorCount++;
+					}
+				}
+				int NPS=(int)(100*((float)(promoterCount-detractorCount)/answerCount));
+				survey.setNpmScore(NPS);
+				surveyRepository.save(survey);
+			}
 		}
 	}
 	

@@ -28,6 +28,7 @@ public class SurveyController {
 	//lists Surveys
 	@GetMapping("/list")
 	public List<Survey> findAllSurveys() {
+		surveyService.updateNpmScores();
 		return surveyService.getSurveys();
 	}
 }

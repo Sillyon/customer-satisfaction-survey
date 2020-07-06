@@ -24,6 +24,6 @@ public class Survey {
 	
 	//private String question; //idk should i store question.
 	
-	@Column(insertable=false)
+	//@Column(insertable=false)
 	private int npmScore;
 }
