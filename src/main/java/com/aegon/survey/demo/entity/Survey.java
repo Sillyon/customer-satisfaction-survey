@@ -1,6 +1,5 @@
 package com.aegon.survey.demo.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +23,5 @@ public class Survey {
 	
 	//private String question; //idk should i store question.
 	
-	//@Column(insertable=false)
 	private int npmScore;
 }

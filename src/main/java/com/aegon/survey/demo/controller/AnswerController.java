@@ -20,12 +20,6 @@ public class AnswerController {
 	@Autowired
 	private AnswerService answerService;
 	
-	//lists topics
-	@GetMapping("/topics")
-	public List<String> getTopics(){
-		return answerService.getTopics();
-	}
-	
 	//submits an answer.
 	@PostMapping("/submit")
 	public Answer addAnswer(@RequestBody Answer answer) throws Exception {
@@ -42,4 +36,11 @@ public class AnswerController {
 	public List<Answer> listAnswersByTopic(@PathVariable int topicId) {
 		return answerService.getAnswersByTopic(topicId);
 	}
+	
+	/*
+	//lists topics
+	@GetMapping("/topics")
+	public List<String> getTopics(){
+		return answerService.getTopics();
+	}*/
 }

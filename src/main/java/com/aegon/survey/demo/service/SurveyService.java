@@ -51,24 +51,13 @@ public class SurveyService {
 		}
 	}
 	
-	// Create Multiple Surveys
-	/*public List<Survey> saveSurveys(List<Survey> surveys) {
-		return surveyRepository.saveAll(surveys);
-	}*/
-	
-	// get survey object by id.
-	/*public Survey getSurveyById(int id) {
-		return surveyRepository.findById(id).orElse(null);
-	}*/
-	
 	//returns topic string list from Survey table. 
 	public List<String> getAllTopics() {
 		return surveyRepository.findAllTopics();
-		/*List<String> topicList = new ArrayList<String>();
-		List<Survey> surveyList=getSurveys();
-		for (Survey survey : surveyList) {
-			topicList.add(survey.getTopic());
-		}
-		return topicList;*/
+	}
+	
+	// get survey object by id.
+	public Survey getSurveyById(int id) {
+		return surveyRepository.findById(id).orElse(null);
 	}
 }
