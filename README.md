@@ -5,7 +5,7 @@ It presents surveys, and a repeatedly answerable survey topic, and calculated Ne
 
 ## Development Environment
 
-Project developed on **Github** in **Java** language by using **Eclipse** IDE. Also **JDK**, **Maven** for build and **Spring Tool Suite** plugin(Eclipse) required.
+Project has developed on **Github** in **Java** language by using **Eclipse** IDE. Also **JDK**, **Maven** for build and **Spring Tool Suite** plugin(Eclipse) required.
 
 ### Requirements
 
@@ -16,7 +16,7 @@ Project developed on **Github** in **Java** language by using **Eclipse** IDE. A
 ### Dependencies Built With
 
 * **Spring Web** (for Service & Controller layers)
-* **Spring Data JPA** (for Entity & Repository layers)
+* **Spring Data JPA** (JPA/Hibernate for Entity & Repository layers)
 * **H2 Database** (inmemory & embedded & portability & fast)
 and additionaly;
 * **Lombok** (some annotations for simplify getter, setter methods)
