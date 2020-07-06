@@ -15,10 +15,18 @@ Project developed on **Github** in **Java** language by using **Eclipse** IDE. A
 
 ### Dependencies Built With
 
-* **Spring Web**
-* **Spring Data JPA**
-* **H2 Database** (inmemory)
-* **Lombok** (some annotations for simplify getter, setter methods)
-
+* **Spring Web** (for Service & Controller layers)
+* **Spring Data JPA** (for Entity & Repository layers)
+* **H2 Database** (inmemory & embedded & portability & fast)
 and additionaly;
+* **Lombok** (some annotations for simplify getter, setter methods)
 * **Swagger** dependency used to getting simple interface for rest and model layers.
+
+### Project Layer Organization
+
+* **Entity** (Domain | Model | DTO)
+* **Repository** (DAO)
+* **Service** (DAOImpl)
+* **Controller** (Rest | Endpoint)
+* and **Config** (Swagger2 | other-configurations)
+* no utility layer.
