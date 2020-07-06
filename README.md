@@ -1,6 +1,6 @@
 # Customer Satisfaction Survey
 
-This project is back-end of customer satisfaction survey Restful Web Application.
+This project is back-end of customer satisfaction survey RESTful Web Service.
 It presents surveys, and a repeatedly answerable survey topic, and calculated Net Promoter Score(NPS) of topics.
 
 ## Development Environment
