@@ -86,6 +86,7 @@ After jar file has executed, api can be accessible by http://localhost:8080/ URI
 
 ### Endpoint of *survey/list*
 That is calculates NPS of related Survey given below:
+
 <img src="https://i.ibb.co/2MDMHPb/survey-list.png">
 
 ### **Net Promoter Score Calculation**
