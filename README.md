@@ -25,8 +25,8 @@ and additionaly;
 ### Project Layer Organization
 
 * **Entity** (Domain | Model | DTO)
-* **Repository** (DAO)
-* **Service** (DAOImpl)
+* **Repository** (DAO/DAOImpl)
+* **Service**
 * **Controller** (Rest | Endpoint)
 * and **Config** (Swagger2 | other-configurations)
 * no utility layer.
