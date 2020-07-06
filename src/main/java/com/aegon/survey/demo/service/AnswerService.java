@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.repository.AnswerRepository;
 import com.aegon.survey.demo.repository.SurveyRepository;
@@ -20,14 +18,13 @@ public class AnswerService {
 	private SurveyRepository surveyRepository;
 	
 	// Create Submit (Fill Survey)
-	@Transactional
 	public Answer saveAnswer(Answer answer) {
-		//survey id ile ansver list al
-		//mesela 4 eleman var ise yeni puanıda ekleyip 5 e böl
-		//sonucu syrveye set et 
-		//int answerCountByTopic = getAnswersByTopic(answer.getSurvey().getTopicId()).size();
-		
 		return answerRepository.save(answer);
+	}
+	
+	//List Answers By Topic
+	public List<Answer> getAnswersByTopic(int topicId) {
+		return answerRepository.findAllBySurveyTopicId(topicId);
 	}
 	
 	// create multiple submits.
@@ -43,11 +40,6 @@ public class AnswerService {
 	// get all Survey Topics.
 	public List<String> getTopics() {
 		return surveyRepository.findAllTopics();
-	}
-	
-	//List Answers By Topic
-	public List<Answer> getAnswersByTopic(int topicId) {
-		return answerRepository.findAllBySurveyTopicId(topicId);
 	}
 	
 	//????????????????????????????????????????????

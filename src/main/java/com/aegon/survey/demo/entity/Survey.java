@@ -1,5 +1,6 @@
 package com.aegon.survey.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,8 +9,6 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.AccessLevel;
 
 @Data
 @AllArgsConstructor
@@ -23,6 +22,8 @@ public class Survey {
     
 	private String topic;
 	
-	@Setter(AccessLevel.NONE) //this option omits to set this variable.
-	private Integer npmScore;
+	//private String question; //idk should i store question.
+	
+	@Column(insertable=false)
+	private int npmScore;
 }

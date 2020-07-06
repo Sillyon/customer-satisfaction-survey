@@ -10,6 +10,6 @@ import com.aegon.survey.demo.entity.Survey;
 @Repository
 public interface SurveyRepository extends JpaRepository<Survey,Integer> {
 	
-	@Query("select topic FROM Survey" )
+	@Query("select topic FROM Survey")
 	List<String> findAllTopics();
 }

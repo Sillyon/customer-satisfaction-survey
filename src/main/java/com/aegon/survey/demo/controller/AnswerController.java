@@ -28,8 +28,13 @@ public class AnswerController {
 	
 	//submits an answer.
 	@PostMapping("/submit")
-	public Answer addAnswer(@RequestBody Answer answer) {
-		return answerService.saveAnswer(answer);
+	public Answer addAnswer(@RequestBody Answer answer) throws Exception {
+		if(answer.getScore()<=10 && answer.getScore()>=0) {
+			return answerService.saveAnswer(answer);
+		}
+		else {
+			throw new Exception("Score is invalid!");
+		}
 	}
 	
 	//lists answers of a Survey Topic.
