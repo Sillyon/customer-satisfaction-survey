@@ -85,7 +85,7 @@ After jar file has executed, api can be accessible by http://localhost:8080/ URI
 <img src="https://i.ibb.co/6FprMVL/list-answers-of-survey.png">
 
 ### Endpoint of *survey/list*
-That is calculates NPS of related Survey given below:
+This endpoint also gets of calculated NPS of related Surveys given below:
 
 <img src="https://i.ibb.co/2MDMHPb/survey-list.png">
 
