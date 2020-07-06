@@ -33,6 +33,6 @@ and additionaly;
 
 ### Project Execution
 
-* localhost:8080 URI for Postman,
-* localhost:8080/h2-console URI for db interface, 
-* localhost:8080/swagger-ui.html URI for swagger interface.
+* http://localhost:8080/ URI for Postman,
+* http://localhost:8080/h2-console URI for db interface, 
+* http://localhost:8080/swagger-ui.html URI for swagger interface.
