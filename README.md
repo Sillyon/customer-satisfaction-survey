@@ -57,11 +57,11 @@ Fields of **Answer** are:
 
 ### Project Deployment
 
-Run terminal at project path, run command given below:
+Run terminal at project path, run the command given below:
 ```
 mvn clean install
 ```
-After compiled file created at target folder in project, run terminal at target folder, execute jar file with the command given below:
+After compile has been done, jar file will be created at target folder in project path. Then, run terminal at target folder, execute jar file with the command given below:
 ```
 java -jar customer-satisfaction-survey-0.0.1-SNAPSHOT.jar
 ```

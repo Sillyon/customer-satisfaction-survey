@@ -7,16 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.aegon.survey.demo.entity.Answer;
 import com.aegon.survey.demo.repository.AnswerRepository;
-import com.aegon.survey.demo.repository.SurveyRepository;
 
 @Service
 public class AnswerService {
 	
 	@Autowired
 	private AnswerRepository answerRepository;
-	
-	@Autowired
-	private SurveyRepository surveyRepository;
 	
 	// Create Submit (Fill Survey)
 	public Answer saveAnswer(Answer answer) {
@@ -28,8 +24,11 @@ public class AnswerService {
 		return answerRepository.findAllBySurveyTopicId(topicId);
 	}
 	
-	// get all Survey Topics.
-	public List<String> getTopics() {
-		return surveyRepository.findAllTopics();
+	public List<Answer> getAnswers() {
+		return answerRepository.findAll();
+	}
+	
+	public Long count() {
+		return answerRepository.count();
 	}
 }

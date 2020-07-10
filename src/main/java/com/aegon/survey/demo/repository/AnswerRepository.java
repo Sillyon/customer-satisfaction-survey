@@ -10,4 +10,5 @@ import com.aegon.survey.demo.entity.Answer;
 public interface AnswerRepository extends JpaRepository<Answer, Integer> {
 	
 	List<Answer> findAllBySurveyTopicId(int topicId);
+	
 }

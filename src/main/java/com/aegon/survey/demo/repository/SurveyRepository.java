@@ -8,8 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.aegon.survey.demo.entity.Survey;
 
 @Repository
-public interface SurveyRepository extends JpaRepository<Survey,Integer> {
+public interface SurveyRepository extends JpaRepository<Survey, Integer> {
+	
+	Boolean existsByTopic(String topic);
 	
 	@Query("select topic FROM Survey")
 	List<String> findAllTopics();
+
 }

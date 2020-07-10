@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aegon.survey.demo.entity.Answer;
@@ -20,27 +22,34 @@ public class AnswerController {
 	@Autowired
 	private AnswerService answerService;
 	
-	//submits an answer.
-	@PostMapping("/submit")
-	public Answer addAnswer(@RequestBody Answer answer) throws Exception {
-		if(answer.getScore()<=10 && answer.getScore()>=0) {
-			return answerService.saveAnswer(answer);
-		}
-		else {
-			throw new Exception("Score is invalid!");
-		}
+	@GetMapping
+	public List<Answer> findAllAnswers() {
+		return answerService.getAnswers();
 	}
 	
 	//lists answers of a Survey Topic.
-	@GetMapping("/listByTopic/{topicId}")
+    @GetMapping("/topic/{topicId}")
 	public List<Answer> listAnswersByTopic(@PathVariable int topicId) {
 		return answerService.getAnswersByTopic(topicId);
 	}
 	
-	/*
-	//lists topics
-	@GetMapping("/topics")
-	public List<String> getTopics(){
-		return answerService.getTopics();
-	}*/
+	//adds an answer.
+	@PostMapping
+	public Answer addAnswer(@RequestBody Answer answer) throws Exception {
+		if(answer.getSurvey()==null) {
+			throw new Exception("Answer has no assign by any Survey Topic!");
+		}
+		else if(answer.getScore()<0 || answer.getScore()>10) {
+			throw new Exception("Score is invalid!");
+		}
+		else {
+			return answerService.saveAnswer(answer);
+		}
+	}
+	
+	@RequestMapping(value = "/count", method = RequestMethod.GET)
+    @ResponseBody
+    public Long count() {
+		return answerService.count();
+	}
 }

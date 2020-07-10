@@ -18,6 +18,10 @@ public class SurveyService {
 	@Autowired
 	private AnswerRepository answerRepository;
 	
+	public Boolean isSurveyAlreadyExist(String topic) {
+		return surveyRepository.existsByTopic(topic);
+	}
+	
 	//Create Survey
 	public Survey saveSurvey(Survey survey) {
 		return surveyRepository.save(survey);
@@ -51,13 +55,17 @@ public class SurveyService {
 		}
 	}
 	
-	//returns topic string list from Survey table. 
+	//returns topic string list from Survey table. ?????????????????????
 	public List<String> getAllTopics() {
 		return surveyRepository.findAllTopics();
 	}
 	
 	// get survey object by id.
-	public Survey getSurveyById(int id) {
-		return surveyRepository.findById(id).orElse(null);
+	public Survey getSurveyById(int topicId) {
+		return surveyRepository.findById(topicId).orElse(null);
+	}
+
+	public Long count() {
+		return surveyRepository.count();
 	}
 }
