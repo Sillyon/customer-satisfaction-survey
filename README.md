@@ -57,7 +57,7 @@ Fields of **Answer** are:
 
 ### Project Deployment
 
-Run terminal at project path, run the command given below:
+Run terminal at project path, run the command given below(Note: Disable test classes before deployment!):
 ```
 mvn clean install
 ```
