@@ -92,8 +92,24 @@ This endpoint also gets of calculated NPS of related Surveys given below:
 ### **Net Promoter Score Calculation**
 <img src="https://i.ibb.co/XXZjYL2/NPS.png">
 
+## Running the tests
 
-## Acknowledgments
+As an example, **JUnit** tests have been done using **Mockito**.
+
+### Mockito JUnit Tests
+
+I just added the annotation to above of *src/test/java/com/aegon/survey/demo/CustomerSatisfactionSurveyApplicationTests* class given below:
+
+```
+@RunWith(SpringRunner.class)
+```
+And added only 2 JUnit tests which testing get and add Survey data.
+And i tested many examples using by **Postman**.
+
+<img src="https://i.ibb.co/yqTF9h1/test.png">
+
+
+## Acknowledgements
 
 *Additional Tip*: I had to install *lombok.jar* file in Eclipse installation path separately. Because there was a problem of getter, setters. I guess that's about using lombok in the Eclipse version I used.
 
