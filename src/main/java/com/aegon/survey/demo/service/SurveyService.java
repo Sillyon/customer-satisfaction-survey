@@ -30,7 +30,7 @@ public class SurveyService {
 	//List Survey object with Topics
 	public List<Survey> getSurveys() {
 		List<Survey> surveys = surveyRepository.findAll();
-		System.out.println("Getting data from DB : " + surveys);
+		//System.out.println("Getting data from DB : " + surveys);
 		return surveys;
 	}
 	
