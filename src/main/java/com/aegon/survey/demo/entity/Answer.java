@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Answer {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int submitId;
 	
 	private int score;
