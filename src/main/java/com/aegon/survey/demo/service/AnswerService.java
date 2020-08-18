@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface AnswerService {
 
-    Answer saveAnswer(Answer answer);
+	Answer saveAnswer(Answer answer);
 
-    List<Answer> getAnswersByTopic(Long topicId);
+	List<Answer> getAnswersByTopic(Long topicId);
 
-    List<Answer> getAnswers();
+	List<Answer> getAnswers();
 }

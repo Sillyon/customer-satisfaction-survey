@@ -13,56 +13,56 @@ import java.util.List;
 @Service
 public class AnswerServiceImpl implements AnswerService {
 
-    private final AnswerRepository answerRepository;
+	private final AnswerRepository answerRepository;
 
-    private final SurveyRepository surveyRepository;
+	private final SurveyRepository surveyRepository;
 
-    public AnswerServiceImpl(AnswerRepository answerRepository, SurveyRepository surveyRepository) {
-        this.answerRepository = answerRepository;
-        this.surveyRepository = surveyRepository;
-    }
+	public AnswerServiceImpl(AnswerRepository answerRepository, SurveyRepository surveyRepository) {
+		this.answerRepository = answerRepository;
+		this.surveyRepository = surveyRepository;
+	}
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public Answer saveAnswer(Answer answer) {
-        Survey survey = answer.getSurvey();
-        if (survey == null || survey.getId() == null || survey.getId() == 0) {
-            throw new RuntimeException("Answer has no assign by any Survey Topic!");
-        } else if (answer.getScore() < 0 || answer.getScore() > 10) {
-            throw new RuntimeException("Score is invalid!");
-        }
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Answer saveAnswer(Answer answer) {
+		Survey survey = answer.getSurvey();
+		if (survey == null || survey.getId() == null || survey.getId() == 0) {
+			throw new RuntimeException("Answer has no assign by any Survey Topic!");
+		} else if (answer.getScore() < 0 || answer.getScore() > 10) {
+			throw new RuntimeException("Score is invalid!");
+		}
 
-        survey = surveyRepository.getOne(survey.getId());
+		survey = surveyRepository.getOne(survey.getId());
 
-        List<Answer> answers = answerRepository.findAllBySurvey(survey);
-        answers.add(answer);
-        int answerCount = answers.size();
-        if (answerCount != 0) {
-            int promoterCount = 0;
-            int detractorCount = 0;
-            for (Answer anAnswer : answers) {
-                if (anAnswer.getScore() >= 9) {
-                    promoterCount++;
-                } else if (anAnswer.getScore() <= 6) {
-                    detractorCount++;
-                }
-            }
-            int npmScore = (int) (100 * ((float) (promoterCount - detractorCount) / answerCount));
-            survey.setNpmScore(npmScore);
-            surveyRepository.save(survey);
-        }
-        return answerRepository.save(answer);
-    }
+		List<Answer> answers = answerRepository.findAllBySurvey(survey);
+		answers.add(answer);
+		int answerCount = answers.size();
+		if (answerCount != 0) {
+			int promoterCount = 0;
+			int detractorCount = 0;
+			for (Answer anAnswer : answers) {
+				if (anAnswer.getScore() >= 9) {
+					promoterCount++;
+				} else if (anAnswer.getScore() <= 6) {
+					detractorCount++;
+				}
+			}
+			int npmScore = (int) (100 * ((float) (promoterCount - detractorCount) / answerCount));
+			survey.setNpmScore(npmScore);
+			surveyRepository.save(survey);
+		}
+		return answerRepository.save(answer);
+	}
 
-    @Override
-    @Transactional(propagation = Propagation.SUPPORTS)
-    public List<Answer> getAnswersByTopic(Long topicId) {
-        return answerRepository.findAllBySurvey(surveyRepository.getOne(topicId));
-    }
+	@Override
+	@Transactional(propagation = Propagation.SUPPORTS)
+	public List<Answer> getAnswersByTopic(Long topicId) {
+		return answerRepository.findAllBySurvey(surveyRepository.getOne(topicId));
+	}
 
-    @Override
-    @Transactional(propagation = Propagation.SUPPORTS)
-    public List<Answer> getAnswers() {
-        return answerRepository.findAll();
-    }
+	@Override
+	@Transactional(propagation = Propagation.SUPPORTS)
+	public List<Answer> getAnswers() {
+		return answerRepository.findAll();
+	}
 }

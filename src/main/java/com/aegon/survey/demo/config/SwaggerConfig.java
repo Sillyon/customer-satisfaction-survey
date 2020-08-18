@@ -17,23 +17,23 @@ import java.time.LocalDate;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Post API Reference")
-                .version("1.0.0")
-                .build();
-    }
+	ApiInfo apiInfo() {
+		return new ApiInfoBuilder()
+				.title("Post API Reference")
+				.version("1.0.0")
+				.build();
+	}
 
-    @Bean
-    public Docket customImplementation() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select().paths(PathSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.aegon.survey.demo"))
-                .build()
-                .pathMapping("/")
-                .useDefaultResponseMessages(false)
-                .directModelSubstitute(LocalDate.class, String.class)
-                .genericModelSubstitutes(ResponseEntity.class);
-    }
+	@Bean
+	public Docket customImplementation() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.apiInfo(apiInfo())
+				.select()
+				.paths(PathSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("com.aegon.survey.demo"))
+				.build().pathMapping("/")
+				.useDefaultResponseMessages(false)
+				.directModelSubstitute(LocalDate.class, String.class)
+				.genericModelSubstitutes(ResponseEntity.class);
+	}
 }

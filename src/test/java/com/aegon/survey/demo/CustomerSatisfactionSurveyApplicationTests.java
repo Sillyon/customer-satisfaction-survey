@@ -21,42 +21,41 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerSatisfactionSurveyApplicationTests {
 
-    @InjectMocks
-    private SurveyServiceImpl surveyService;
+	@InjectMocks
+	private SurveyServiceImpl surveyService;
 
-    @Mock
-    private SurveyRepository surveyRepository;
+	@Mock
+	private SurveyRepository surveyRepository;
 
+	@Test
+	public void getSurveysTest() {
+		Survey survey = new Survey();
+		survey.setId(1L);
+		survey.setTopic("Groovy");
+		survey.setNpmScore(0);
 
-    @Test
-    public void getSurveysTest() {
-        Survey survey = new Survey();
-        survey.setId(1L);
-        survey.setTopic("Groovy");
-        survey.setNpmScore(0);
+		Survey survey2 = new Survey();
+		survey.setId(2L);
+		survey.setTopic("Uber");
+		survey.setNpmScore(0);
 
-        Survey survey2 = new Survey();
-        survey.setId(2L);
-        survey.setTopic("Uber");
-        survey.setNpmScore(0);
+		when(surveyRepository.findAll()).thenReturn(Stream.of(survey, survey2).collect(Collectors.toList()));
 
-        when(surveyRepository.findAll()).thenReturn(Stream.of(survey, survey2).collect(Collectors.toList()));
+		List<Survey> foundSurvey = surveyService.getSurveys();
 
-        List<Survey> foundSurvey = surveyService.getSurveys();
+		assertNotNull(foundSurvey);
+		assertEquals(2, foundSurvey.size());
 
-        assertNotNull(foundSurvey);
-        assertEquals(2, foundSurvey.size());
+		verify(surveyRepository).findAll();
+	}
 
-        verify(surveyRepository).findAll();
-    }
+	@Test
+	public void saveSurveyTest() {
+		Survey survey = new Survey();
+		survey.setTopic("Aegon");
+		survey.setNpmScore(0);
 
-    @Test
-    public void saveSurveyTest() {
-        Survey survey = new Survey();
-        survey.setTopic("Aegon");
-        survey.setNpmScore(0);
-
-        when(surveyRepository.save(survey)).thenReturn(survey);
-        assertEquals(survey, surveyService.saveSurvey(survey));
-    }
+		when(surveyRepository.save(survey)).thenReturn(survey);
+		assertEquals(survey, surveyService.saveSurvey(survey));
+	}
 }

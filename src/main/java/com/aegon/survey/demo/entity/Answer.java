@@ -15,9 +15,9 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode(callSuper = true)
 public class Answer extends AbstractEntity {
 
-    private int score;
-    private String feedback;
+	private int score;
+	private String feedback;
 
-    @ManyToOne(targetEntity = Survey.class)
-    private Survey survey;
+	@ManyToOne(targetEntity = Survey.class)
+	private Survey survey;
 }

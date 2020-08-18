@@ -11,21 +11,21 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class SurveyController {
 
-    private final SurveyService surveyService;
+	private final SurveyService surveyService;
 
-    public SurveyController(SurveyService surveyService) {
-        this.surveyService = surveyService;
-    }
+	public SurveyController(SurveyService surveyService) {
+		this.surveyService = surveyService;
+	}
 
-    @PostMapping
-    public Survey addSurvey(@RequestBody Survey survey){
-        //Todo Convert Eklenecek
-        return surveyService.saveSurvey(survey);
+	@PostMapping
+	public Survey addSurvey(@RequestBody Survey survey) {
+		// Todo Convert Eklenecek
+		return surveyService.saveSurvey(survey);
 
-    }
+	}
 
-    @GetMapping
-    public List<Survey> findAllSurveys() {
-        return surveyService.getSurveys();
-    }
+	@GetMapping
+	public List<Survey> findAllSurveys() {
+		return surveyService.getSurveys();
+	}
 }

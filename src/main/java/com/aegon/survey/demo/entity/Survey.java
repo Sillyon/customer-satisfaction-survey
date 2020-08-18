@@ -10,6 +10,6 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 public class Survey extends AbstractEntity {
 
-    private String topic;
-    private int npmScore;
+	private String topic;
+	private int npmScore;
 }
