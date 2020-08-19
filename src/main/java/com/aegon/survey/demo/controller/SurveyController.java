@@ -19,7 +19,7 @@ public class SurveyController {
 
 	@PostMapping
 	public Survey addSurvey(@RequestBody Survey survey) {
-		// Todo Convert Eklenecek
+		// TODO Convert Eklenecek
 		return surveyService.saveSurvey(survey);
 
 	}

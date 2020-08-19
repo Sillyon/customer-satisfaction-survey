@@ -28,7 +28,7 @@ public class AnswerController {
 	}
 
 	@PostMapping
-	public Answer addAnswer(@RequestBody Answer answer) throws Exception {
+	public Answer addAnswer(@RequestBody Answer answer) {
 		return answerService.saveAnswer(answer);
 	}
 }

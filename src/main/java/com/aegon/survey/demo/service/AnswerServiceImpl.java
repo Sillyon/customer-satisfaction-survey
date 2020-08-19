@@ -34,7 +34,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 		survey = surveyRepository.getOne(survey.getId());
 
-		List<Answer> answers = answerRepository.findAllBySurvey(survey);
+		List<Answer> answers = answerRepository.findAllBySurveyId(survey.getId());
 		answers.add(answer);
 		int answerCount = answers.size();
 		if (answerCount != 0) {
@@ -57,7 +57,7 @@ public class AnswerServiceImpl implements AnswerService {
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public List<Answer> getAnswersByTopic(Long topicId) {
-		return answerRepository.findAllBySurvey(surveyRepository.getOne(topicId));
+		return answerRepository.findAllBySurveyId(topicId);
 	}
 
 	@Override
