@@ -1,7 +1,10 @@
 package com.aegon.survey.demo.service;
 
 import com.aegon.survey.demo.entity.Survey;
+import com.aegon.survey.demo.exception.ResourceNotFoundException;
 import com.aegon.survey.demo.repository.SurveyRepository;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +45,9 @@ public class SurveyServiceImpl implements SurveyService {
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS)
-	public Survey getSurveyById(Long topicId) {
-		return surveyRepository.findById(topicId).orElse(null);
+	public ResponseEntity<Survey> getSurveyById(Long id) {
+		Survey survey = surveyRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Survey not exist with id: " + id));
+		return ResponseEntity.ok(survey);
 	}
 }

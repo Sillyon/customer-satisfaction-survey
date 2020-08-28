@@ -4,6 +4,8 @@ import com.aegon.survey.demo.entity.Survey;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 public interface SurveyService {
 
 	Boolean isSurveyAlreadyExist(String topic);
@@ -12,5 +14,5 @@ public interface SurveyService {
 
 	List<Survey> getSurveys();
 
-	Survey getSurveyById(Long topicId);
+	ResponseEntity<Survey> getSurveyById(Long topicId);
 }
